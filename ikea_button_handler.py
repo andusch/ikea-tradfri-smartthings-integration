@@ -1,7 +1,7 @@
 /**
  *  Ikea Tradfri Shortcut Button
  *
- *  Copyright 2015, 2021 Mitch Pond / iquix
+ *  Copyright 2015, 2021 Alexandru Scheusan / andusch
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -18,7 +18,7 @@ import groovy.json.JsonOutput
 import physicalgraph.zigbee.zcl.DataType
 
 metadata {
-    //definition (name: "Ikea Tradfri Shortcut Button", namespace: "smartthings", author: "Mitch Pond/iquix", runLocally: true, minHubCoreVersion: "000.022.0002", executeCommandsLocally: false, ocfDeviceType: "x.com.st.d.remotecontroller") {
+    //definition (name: "Ikea Tradfri Shortcut Button", namespace: "smartthings", author: "Alexandru Scheusan/andusch", runLocally: true, minHubCoreVersion: "000.022.0002", executeCommandsLocally: false, ocfDeviceType: "x.com.st.d.remotecontroller") {
     definition (name: "Ikea Tradfri Shortcut Button", namespace: "iquix", author: "Mitch Pond/iquix", ocfDeviceType: "x.com.st.d.remotecontroller") {
         capability "Actuator"
         capability "Battery"
