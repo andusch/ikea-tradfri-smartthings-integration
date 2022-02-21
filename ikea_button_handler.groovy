@@ -1,24 +1,7 @@
-/**
- *  Ikea Tradfri Shortcut Button
- *
- *  Copyright 2015, 2021 Alexandru Scheusan / andusch
- *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License. You may obtain a copy of the License at:
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
- *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
- *  for the specific language governing permissions and limitations under the License.
- *
- */
-
 import groovy.json.JsonOutput
 import physicalgraph.zigbee.zcl.DataType
 
 metadata {
-    //definition (name: "Ikea Tradfri Shortcut Button", namespace: "smartthings", author: "Alexandru Scheusan/andusch", runLocally: true, minHubCoreVersion: "000.022.0002", executeCommandsLocally: false, ocfDeviceType: "x.com.st.d.remotecontroller") {
     definition (name: "Ikea Tradfri Shortcut Button", namespace: "iquix", author: "Alexandru Scheusan/andusch", ocfDeviceType: "x.com.st.d.remotecontroller") {
         capability "Actuator"
         capability "Battery"
@@ -219,7 +202,7 @@ private Map getButtonResult(buttonState, buttonNumber = 1) {
         log.info "holdp1 : $holdPreference"
         holdPreference = (holdPreference as int) * 1000
         log.info "holdp2 : $holdPreference"
-        if (timeDiff > 10000) {         //timeDiff>10sec check for refresh sending release value causing actions to be executed
+        if (timeDiff > 10000) {         
             return [:]
         }
         else {
@@ -244,7 +227,6 @@ private Map getButtonResult(buttonState, buttonNumber = 1) {
 def installed() {
     initialize()
 
-    // Initialize default states
     device.currentValue("numberOfButtons")?.times {
         sendEvent(name: "button", value: "pushed", data: [buttonNumber: it+1], displayed: false)
     }
@@ -255,7 +237,6 @@ def updated() {
 }
 
 def initialize() {
-    // Arrival sensors only goes OFFLINE when Hub is off
     sendEvent(name: "DeviceWatch-Enroll", value: JsonOutput.toJson([protocol: "zigbee", scheme:"untracked"]), displayed: false)
     if ((device.getDataValue("manufacturer") == "OSRAM") && (device.getDataValue("model") == "LIGHTIFY Dimming Switch")) {
         sendEvent(name: "numberOfButtons", value: 2, displayed: false)
@@ -271,7 +252,7 @@ def initialize() {
             sendEvent(name: "numberOfButtons", value: 4, displayed: false)
         }
         else {
-            sendEvent(name: "numberOfButtons", value: 4, displayed: false)    //default case. can be changed later.
+            sendEvent(name: "numberOfButtons", value: 4, displayed: false)
         }
     }
     else if ((device.getDataValue("manufacturer") == "IKEA of Sweden") && (device.getDataValue("model") == "TRADFRI SHORTCUT Button")) {
@@ -279,7 +260,6 @@ def initialize() {
         sendEvent(name: "supportedButtonValues", value: ["pushed", "held"].encodeAsJSON(), displayed: false)
     }    
     else {
-        //default. can be changed
         sendEvent(name: "numberOfButtons", value: 4, displayed: false)
     }
 
