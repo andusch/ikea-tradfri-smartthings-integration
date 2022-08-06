@@ -1,4 +1,4 @@
-# ikea-shortcut-button-smartthings
+IKEA TRADFRI BUTTON INTEGRATION WITH SMARTTHINGS HUB
 A device handler for Ikea Shortcut Button to work with the Smartthings Hub.
 
 For this to work, you need to go to the Smartthings IDE(https://graph.api.smartthings.com).
