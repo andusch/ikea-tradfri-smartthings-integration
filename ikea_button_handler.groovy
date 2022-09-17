@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 import physicalgraph.zigbee.zcl.DataType
 
 metadata {
-    definition (name: "Ikea Tradfri Shortcut Button", namespace: "iquix", author: "Alexandru Scheusan/andusch", ocfDeviceType: "x.com.st.d.remotecontroller") {
+    definition (name: "Ikea Tradfri Shortcut Button", namespace: "not_andu", author: "Alexandru Scheusan/andusch", ocfDeviceType: "x.com.st.d.remotecontroller") {
         capability "Actuator"
         capability "Battery"
         capability "Button"
